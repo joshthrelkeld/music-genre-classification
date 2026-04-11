@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# music-genre-classification
-Machine learning project for music genre classification using frequency-domain audio features (STFT, spectral centroid, specral bandwidth, MFCCs), including EDA, feature scaling, model training, comparison, and evaluation.
-=======
-# Frequency-dependent Genre Classification
+# Music Genre Classification
 
 Music is core to my identity; my father is a drummer, my mother is a singer, and I grew up playing the piano and saxophone in classical and jazz bands daily. Through my studies in audio-neuro interactions, I can’t help but *wholeheartedly* believe that music is core to the human condition — despite being based on waveforms and harmonics: math. In clinical practice, audio is critical to tasks in health like EEG readings and mental health diagnoses. As both the music and health industries now experience rapid, systemic, AI-related darwinism, it goes without question that ML is becoming a ***pillar***. 
 
@@ -120,4 +116,3 @@ A surprising result is the models' ability to accurately classify blues despite 
 
 Joshua Threlkeld  
 [GitHub](https://github.com/joshthrelkeld) · [LinkedIn](https://linkedin.com/in/joshuathrelkeld)
->>>>>>> fd4d1a3 (Initial commit: music genre classification project)
