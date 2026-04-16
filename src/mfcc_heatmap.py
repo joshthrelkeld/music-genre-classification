@@ -74,6 +74,6 @@ ax.tick_params(axis="x", labelsize=10, rotation=20)
 ax.tick_params(axis="y", labelsize=10, rotation=0)
 
 plt.tight_layout()
-plt.savefig("genre_heatmap.png", dpi=150, bbox_inches="tight")
+plt.savefig('../figures/genre_heatmap.png', dpi=150, bbox_inches='tight')
 plt.show()
 print("Saved: genre_heatmap.png")

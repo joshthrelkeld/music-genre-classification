@@ -54,5 +54,5 @@ ax.grid(which='minor', color='white', linewidth=1.5)
 ax.tick_params(which='minor', bottom=False, left=False)
 
 plt.tight_layout()
-plt.savefig('mfcc_heatmap.png', dpi=300, bbox_inches='tight')
+plt.savefig('../figures/mfcc_heatmap.png', dpi=300, bbox_inches='tight')
 plt.show()
