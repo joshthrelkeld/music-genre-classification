@@ -68,7 +68,7 @@ Three classifiers were trained using scikit-learn with default hyperparameters:
 | Model | Description |
 |---|---|
 | Logistic Regression | Linear baseline; L2 regularization |
-| Random Forest | 100 estimators; Gini impurity |
+| Random Forest | 200 estimators; Gini impurity |
 | Support Vector Machine | RBF kernel; C=1.0 |
 
 ---
