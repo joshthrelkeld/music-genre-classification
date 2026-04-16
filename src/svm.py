@@ -41,7 +41,7 @@ def run_svm():
         ("scaler", StandardScaler()),
         ("svm", SVC(
             kernel="rbf",   # allows curved decision boundaries
-            C=10,           # penalizes misclassification more strongly, improving fit at the cost of higher overfitting risk
+            C=1.0,           # penalizes misclassification more strongly, improving fit at the cost of higher overfitting risk
             gamma="scale",  # adapts kernel sensitivity to the feature distribution
             random_state=42
         ))
