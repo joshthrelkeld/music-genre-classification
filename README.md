@@ -14,7 +14,7 @@ This project trains and evaluates three classical classification models on the
 dataset, comparing their performance and examining where and why misclassifications occur within each. The goal is not to optimize predictive accuracy, but to demonstrate clean ML workflow and produce logical reasoning and evaluation.
 
 ---
-
+```
 music-genre-classification/
 │
 ├── data/
@@ -42,7 +42,7 @@ music-genre-classification/
 ├── LICENSE
 ├── README.md
 └── requirements.txt
-
+```
 ---
 
 ## Extracted features
