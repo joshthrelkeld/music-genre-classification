@@ -26,17 +26,10 @@ music-genre-classification/
 │   ├── confusion_matrix_lr.png
 │   ├── genre_feature_profile_heatmap.png
 │   ├── genre_heatmap.png
+│   ├── heat_map.png
 │   ├── mfcc_heatmap.png
+│   ├── random_forest_lr.png
 │   └── svm_lr.png
-│
-├── src/
-│   ├── heat_map.py
-│   ├── logistic_regression.py
-│   ├── mfcc_heatmap.py
-│   ├── random_forest.py
-│   ├── scatterplot.py
-│   ├── svm.py
-│   └── train.py
 │
 ├── .gitignore
 ├── LICENSE
