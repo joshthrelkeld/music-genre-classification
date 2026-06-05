@@ -1,8 +1,7 @@
 # Music Genre Classification
 
-Music is core to my identity; my father is a drummer, my mother is a singer, and I grew up playing the piano and saxophone in classical and jazz bands daily. Through my studies in audio-neuro interactions, I can’t help but *wholeheartedly* believe that music is core to the human condition — despite being based on waveforms and harmonics: math. In clinical practice, audio is critical to tasks in health like EEG readings and mental health diagnoses. As both the music and health industries now experience rapid, systemic, AI-related darwinism, it goes without question that ML is becoming a ***pillar***. 
-
-This is a machine learning project classifying audio clips to music genres using logistic regression, random forest, and support vector machine models. It was synthesized to determine the extent to which genre separability is frequency dependent, as well as the interaction of these features.
+My father is a drummer, my mother is a pianist, and I play saxophone. That background made me curious about what actually separates musical genres at the signal level, and whether those differences are learnable by a model.
+This project classifies audio clips by genre using logistic regression, random forest, and support vector machine models. The focus is on frequency-dependent features and how well each model exploits them — not on maximizing accuracy, but on understanding where and why misclassifications happen.
 
 ---
 
