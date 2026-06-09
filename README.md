@@ -10,7 +10,7 @@ This project classifies audio clips by genre using logistic regression, random f
 The music genre spectra dataset contains short-time Fourier transform (STFT), spectral centroid, spectral bandwidth, and mel-frequency cepstral coefficients (MFCCs). STFT and MFCCs are foundational to both voice-contingent mental health diagnosis and EEG, while spectral centroid and bandwidth are similarly fundamental in mental health diagnosis.
 
 This project trains and evaluates three classical classification models on the
-dataset, comparing their performance and examining where and why misclassifications occur within each. The goal is not to optimize predictive accuracy, but to demonstrate clean ML workflow and produce logical reasoning and evaluation.
+dataset, comparing their performance and examining where and why misclassifications occur within each. Critically, the goal is to explore the attributes and limitations of these features in classifcation rather than optimizing for predictive accuracy.
 
 ---
 ```
