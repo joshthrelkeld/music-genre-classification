@@ -107,9 +107,9 @@ The accompanying paper is available in the `paper/` directory.
 
 ## Discussion
 
-The results indicate that, while frequency-dependent features provide some level of differentiation, these models struggle with separating genres that are more rhythmically separable. This materializes through the three models performing practically identically, implying that the bottleneck is frequency-dependent feature effectiveness.
+The results indicate that, while frequency-dependent features provide some level of differentiation, these models struggle with separating genres that are more rhythmically separable. The three models near identical performance signals that the bottleneck is frequency-dependent feature effectiveness.
 
-A surprising result is the models' ability to accurately classify blues despite its seemingly broader influence. Blues is one of the oldest forms of music that is still relevant, widely considered an ancestor to genres such as jazz, rock, and country. It is unexpected that these models, particularly random forest, can classify blues with very high accuracy. This can likely be attributed to reliance on 12-bar phrasing and the blues scale, implicating that blues is perhaps less rhythmically complex (comparatively) than anticipated. Expanding on blues, this invites further investigation on inter-genre variability.
+A surprising result is the models' ability to accurately classify blues despite its seemingly broader influence. Blues is widely considered an ancestor to genres such as jazz, rock, and country. It is unexpected that these models, particularly random forest, can classify blues with very high accuracy. This can likely be attributed to reliance on 12-bar phrasing and the blues scale, implicating that blues is perhaps less rhythmically complex (comparatively) than anticipated. Expanding on blues, this invites further investigation on inter-genre variability.
 
 ---
 
