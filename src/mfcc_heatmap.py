@@ -1,8 +1,10 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+from pathlib import Path
 
-df = pd.read_csv('../data/data.csv')
+data_path = Path(__file__).resolve().parent.parent / "data" / "data.csv"
+df = pd.read_csv(data_path)
 
 # MFCCs capture the timbre of audio, which is strongly tied to genre
 mfcc_cols = [f'mfcc{i}' for i in range(1, 21)]
@@ -54,5 +56,6 @@ ax.grid(which='minor', color='white', linewidth=1.5)
 ax.tick_params(which='minor', bottom=False, left=False)
 
 plt.tight_layout()
-plt.savefig('../figures/mfcc_heatmap.png', dpi=300, bbox_inches='tight')
+fig_path = Path(__file__).resolve().parent.parent / "figures" / "mfcc_heatmap.png"
+plt.savefig(fig_path, dpi=300, bbox_inches='tight')
 plt.show()

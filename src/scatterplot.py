@@ -74,5 +74,6 @@ ax.grid(True, linestyle='--', alpha=0.4)
 ax.set_facecolor('#f9f9f9')
 
 plt.tight_layout()
-plt.savefig('../figures/centroid_vs_bandwidth.png', dpi=300, bbox_inches='tight')
+fig_path = Path(__file__).resolve().parent.parent / "figures" / "centroid_vs_bandwidth.png"
+plt.savefig(fig_path, dpi=300, bbox_inches='tight')
 plt.show()

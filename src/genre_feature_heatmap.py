@@ -4,8 +4,10 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
+from pathlib import Path
 
-df = pd.read_csv("../data/data.csv")
+data_path = Path(__file__).resolve().parent.parent / "data" / "data.csv"
+df = pd.read_csv(data_path)
 
 # Use a small, interpretable feature set to compare how genres differ in both
 # cepstral structure (MFCCs) and broader spectral characteristics
@@ -74,6 +76,7 @@ ax.tick_params(axis="x", labelsize=10, rotation=20)
 ax.tick_params(axis="y", labelsize=10, rotation=0)
 
 plt.tight_layout()
-plt.savefig('../figures/genre_heatmap.png', dpi=150, bbox_inches='tight')
+fig_path = Path(__file__).resolve().parent.parent / "figures" / "genre_heatmap.png"
+plt.savefig(fig_path, dpi=300, bbox_inches='tight')
 plt.show()
 print("Saved: genre_heatmap.png")
