@@ -41,7 +41,7 @@ def run_svm():
         ("scaler", StandardScaler()),
         ("svm", SVC(
             kernel="rbf",   # allows curved decision boundaries
-            C=1.0,           # default regularization strength, consitent with baseline framing
+            C=1.0,           # default regularization strength, consistent with baseline framing
             gamma="scale",  # adapts kernel sensitivity to the feature distribution
             random_state=42
         ))

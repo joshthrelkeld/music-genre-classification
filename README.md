@@ -31,7 +31,7 @@ music-genre-classification/
 │   └── svm_lr.png
 │
 ├── src/
-│   ├── heat_map.py
+│   ├── genre_feature_heatmap.py
 │   ├── logistic_regression.py
 │   ├── mfcc_heatmap.py
 │   ├── random_forest.py

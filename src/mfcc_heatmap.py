@@ -1,79 +1,58 @@
-# This heatmap will help identify whether features like MFCCs and spectral measures
-# show distinct patterns
 import pandas as pd
-import seaborn as sns
 import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
+import numpy as np
 
-df = pd.read_csv("../data/data.csv")
+df = pd.read_csv('../data/data.csv')
 
-# Use a small, interpretable feature set to compare how genres differ in both
-# cepstral structure (MFCCs) and broader spectral characteristics
-features = [
-    "mfcc1", "mfcc2",                          # highlighted
-    "spectral_centroid", "spectral_bandwidth", "chroma_stft"
-]
+# MFCCs capture the timbre of audio, which is strongly tied to genre
+mfcc_cols = [f'mfcc{i}' for i in range(1, 21)]
 
-feature_labels = {
-    "mfcc1":              "MFCC-1",
-    "mfcc2":              "MFCC-2",
-    "spectral_centroid":  "Spectral Centroid",
-    "spectral_bandwidth": "Spectral Bandwidth",
-    "chroma_stft":        "Chroma (STFT)"
-}
+# For each genre, aggregate MFCCs to reveal spectral patterns per class
+mfcc_means = df.groupby('label')[mfcc_cols].mean()
 
-# Average each feature within genre, then z-score across genres so features with
-# different raw scales can be compared on the same heatmap
-genre_means = df.groupby("label")[features].mean()
-genre_means_z = (genre_means - genre_means.mean()) / genre_means.std()
-genre_means_z = genre_means_z.rename(columns=feature_labels)
+# Reorder genres for consistent comparison (avoiding arbitrary pandas ordering)
+genre_order = ['blues', 'classical', 'country', 'disco', 'hiphop',
+               'jazz', 'metal', 'pop', 'reggae', 'rock']
+mfcc_means = mfcc_means.loc[genre_order]
 
-# Capitalize genre labels for readability
-genre_means_z.index = genre_means_z.index.str.capitalize()
+mfcc_means.index = ['Blues', 'Classical', 'Country', 'Disco', 'Hip Hop',
+                    'Jazz', 'Metal', 'Pop', 'Reggae', 'Rock']
 
-# Look for distinct feature profiles across genres rather than uniform values
-# Clear differences would support the idea that these features contain meaningful
-# structure for genre classification
-fig, ax = plt.subplots(figsize=(10, 7))
+# Create visual representation of cross-genre differences in MFCC profiles to assess whether
+# spectral features provide separable classification structure
+fig, ax = plt.subplots(figsize=(14, 7))
 
-sns.heatmap(
-    genre_means_z,
-    annot=True,
-    fmt=".2f",
-    cmap="coolwarm",
-    center=0,
-    linewidths=0.5,
-    linecolor="white",
-    cbar_kws={"label": "Z-Score", "shrink": 0.8},
-    ax=ax
+im = ax.imshow(
+    mfcc_means.values,
+    aspect='auto',
+    cmap='coolwarm',      # shows how values differ across genres
+    interpolation='nearest'
 )
 
-# Visually emphasize MFCC-1 and MFCC-2 because they are central to the
-# interpretation of cross-genre differences in this analysis
-for col_idx in [0, 1]:
-    ax.add_patch(mpatches.FancyBboxPatch(
-        (col_idx, 0),
-        1, len(genre_means_z),
-        boxstyle="square,pad=0",
-        linewidth=2.5,
-        edgecolor="#222222",
-        facecolor="none",
-        transform=ax.transData,
-        clip_on=False
-    ))
+# Hypothesis: if genres are acoustically distinct, their MFCC profiles should show
+# consistent differences across coefficients (e.g., certain coefficients elevated),
+# rather than appearing uniform across rows
+# If MFCC values appear similar across genres (homogeneous color distribution),
+# this suggests weak separability and may explain poor model performance
 
-ax.set_title(
-    "Genre Feature Profile Heatmap (Z-Score Normalized)",
-    fontsize=14,
-    fontweight="bold",
-    pad=14
-)
-ax.set_xlabel("Feature", fontsize=11, labelpad=10)
-ax.set_ylabel("Genre", fontsize=11, labelpad=10)
-ax.tick_params(axis="x", labelsize=10, rotation=20)
-ax.tick_params(axis="y", labelsize=10, rotation=0)
+cbar = plt.colorbar(im, ax=ax)
+cbar.set_label('Mean MFCC Coefficient Value', fontsize=11)
+
+ax.set_xticks(np.arange(len(mfcc_cols)))
+ax.set_xticklabels([f'MFCC-{i}' for i in range(1, 21)], rotation=45, ha='right', fontsize=9)
+
+ax.set_yticks(np.arange(len(mfcc_means.index)))
+ax.set_yticklabels(mfcc_means.index, fontsize=10)
+
+ax.set_xlabel('MFCC Coefficient', fontsize=12)
+ax.set_ylabel('Genre', fontsize=12)
+ax.set_title('Mean MFCC Coefficients by Genre', fontsize=14, fontweight='bold')
+
+ax.set_xticks(np.arange(-0.5, 20, 1), minor=True)
+ax.set_yticks(np.arange(-0.5, 10, 1), minor=True)
+ax.grid(which='minor', color='white', linewidth=1.5)
+ax.tick_params(which='minor', bottom=False, left=False)
 
 plt.tight_layout()
-plt.savefig('../figures/genre_heatmap.png', dpi=150, bbox_inches='tight')
+plt.savefig('../figures/mfcc_heatmap.png', dpi=300, bbox_inches='tight')
 plt.show()
-print("Saved: genre_heatmap.png")
