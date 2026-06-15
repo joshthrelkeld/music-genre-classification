@@ -1,3 +1,4 @@
+"""Generates a heatmap of mean MFCC coefficients by genre."""
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np

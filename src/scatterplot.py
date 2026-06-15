@@ -1,3 +1,4 @@
+"""Plots mean spectral centroid vs. bandwidth by genre."""
 import pandas as pd
 import matplotlib.pyplot as plt
 from pathlib import Path

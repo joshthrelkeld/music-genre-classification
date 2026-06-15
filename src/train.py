@@ -1,5 +1,5 @@
-# Central training script for the music genre classification project.
-# Runs all core models and prints a summary comparison.
+"""Central training script for the music genre classification project.
+Runs all core models and prints a summary comparison."""
 
 import pandas as pd
 from logistic_regression import run_logistic_regression

@@ -1,3 +1,4 @@
+"""Random forest model for music genre classification."""
 import pandas as pd
 from pathlib import Path
 from sklearn.model_selection import train_test_split
@@ -36,22 +37,24 @@ def run_random_forest():
 
     rf_model.fit(X_train, y_train)
     y_pred = rf_model.predict(X_test)
+    accuracy = accuracy_score(y_test, y_pred)
+    f1_scores = get_f1(y_test, y_pred)
 
     # Accuracy summarizes overall performance, while the classification report
     # and confusion matrix show which genres are reliably separated and which
     # remain prone to overlap.
-    print("Accuracy:", accuracy_score(y_test, y_pred))
+    print("Accuracy:", accuracy)
     print("\nClassification Report:\n")
     print(classification_report(y_test, y_pred))
     print("\nConfusion Matrix:\n")
     print(confusion_matrix(y_test, y_pred))
     print("Random Forest F1 Scores:")
-    print(get_f1(y_test, y_pred).to_string())
+    print(f1_scores.to_string())
 
     return {
         "model_name": "Random Forest",
-        "accuracy": accuracy_score(y_test, y_pred),
-        "f1_scores": get_f1(y_test, y_pred)
+        "accuracy": accuracy,
+        "f1_scores": f1_scores
     }
 
 if __name__ == "__main__":

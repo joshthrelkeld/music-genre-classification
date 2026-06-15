@@ -1,3 +1,4 @@
+"""Logistic regression baseline for music genre classification."""
 import pandas as pd
 from pathlib import Path
 
@@ -42,22 +43,24 @@ def run_logistic_regression():
 
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)
+    accuracy = accuracy_score(y_test, y_pred)
+    f1_scores = get_f1(y_test, y_pred)
 
     # Overall accuracy provides a high-level summary, while the classification
     # report and confusion matrix reveal which genres are learned well and
     # which remain difficult to distinguish.
-    print("Accuracy:", accuracy_score(y_test, y_pred))
+    print("Accuracy:", accuracy)
     print("\nClassification Report:\n")
     print(classification_report(y_test, y_pred))
     print("\nConfusion Matrix:\n")
     print(confusion_matrix(y_test, y_pred))
     print("Logistic Regression F1 Scores:")
-    print(get_f1(y_test, y_pred).to_string())
+    print(f1_scores)
 
     return {
         "model_name": "Logistic Regression",
-        "accuracy": accuracy_score(y_test, y_pred),
-        "f1_scores": get_f1(y_test, y_pred)
+        "accuracy": accuracy,
+        "f1_scores": f1_scores
     }
 
 if __name__ == "__main__":

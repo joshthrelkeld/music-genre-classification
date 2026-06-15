@@ -1,5 +1,4 @@
-# This heatmap will help identify whether features like MFCCs and spectral measures
-# show distinct patterns
+"""Generates the Genre Feature Profile Heatmap (z-score normalized)."""
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -12,7 +11,7 @@ df = pd.read_csv(data_path)
 # Use a small, interpretable feature set to compare how genres differ in both
 # cepstral structure (MFCCs) and broader spectral characteristics
 features = [
-    "mfcc1", "mfcc2",                          # highlighted
+    "mfcc1", "mfcc2",                          # MFCC-1 and MFCC-2 are visually emphasized in the plot below
     "spectral_centroid", "spectral_bandwidth", "chroma_stft"
 ]
 
@@ -52,6 +51,7 @@ sns.heatmap(
 
 # Visually emphasize MFCC-1 and MFCC-2 because they are central to the
 # interpretation of cross-genre differences in this analysis
+# col_idx 0 and 1 correspond to MFCC-1 and MFCC-2, which must remain first in the features list above
 for col_idx in [0, 1]:
     ax.add_patch(mpatches.FancyBboxPatch(
         (col_idx, 0),
@@ -79,4 +79,3 @@ plt.tight_layout()
 fig_path = Path(__file__).resolve().parent.parent / "figures" / "genre_heatmap.png"
 plt.savefig(fig_path, dpi=300, bbox_inches='tight')
 plt.show()
-print("Saved: genre_heatmap.png")
